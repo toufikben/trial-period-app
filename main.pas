@@ -122,7 +122,20 @@ end;
 
 procedure TFmain.FireTaskListBeforeConnect(Sender: TObject);
 begin
-   FireTaskList.Params.Values['Database'] := 'tasks.s3db';
+  try
+//FireTaskList.Connected := False;
+//FireTaskList.Params.Clear;
+//FireTaskList.LoginPrompt := false;
+FireTaskList.Params.DriverID := 'SQLite';
+FireTaskList.Params.Values['Database'] := 'tasks.s3db';//or //FireTaskList.Params.Add('Database'+'='+ExtractFilePath (application.ExeName)+'tasks.s3db');
+FireTaskList.Params.Values['Encrypt'] := 'aes-256'; //encrepty database
+FireTaskList.Params.Password := 'Fatwa@!alHoda';   //password database
+  except
+    on E: EDatabaseError do
+      ShowMessage('ÍÏË ÎØÃ ÇËäÇÁ ÇáÇÊÕÇá ÈŞÇÚÏÉ ÇáÈíÇäÇÊ' + E.Message);
+  end;
+
+
 end;
 
 procedure TFmain.FormActivate(Sender: TObject);
