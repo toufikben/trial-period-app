@@ -123,9 +123,9 @@ end;
 procedure TFmain.FireTaskListBeforeConnect(Sender: TObject);
 begin
   try
-//FireTaskList.Connected := False;
-//FireTaskList.Params.Clear;
-//FireTaskList.LoginPrompt := false;
+FireTaskList.Connected := False;
+FireTaskList.Params.Clear;
+FireTaskList.LoginPrompt := false;
 FireTaskList.Params.DriverID := 'SQLite';
 FireTaskList.Params.Values['Database'] := 'tasks.s3db';//or //FireTaskList.Params.Add('Database'+'='+ExtractFilePath (application.ExeName)+'tasks.s3db');
 FireTaskList.Params.Values['Encrypt'] := 'aes-256'; //encrepty database
